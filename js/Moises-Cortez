@@ -1,0 +1,44 @@
+int rectWidth = 100;
+int rectHeight = 300;
+color[] colors;
+float[] brightnessValues = {70, 50, 80, 60, 90, 75}; // Valores de brillo
+
+void setup() {  //setup contiene las instrucciones que se ejecutan una sola vez, al inico
+  size(800, 400);
+  background(0);
+
+  rectWidth = 100;
+  rectHeight = 300;
+
+  colors = new color[6];
+  generateColors(); // Función para generar colores HSB
+
+  // Patrón de rectángulos
+  for (int i = 0; i < 6; i++) {
+    fill(colors[i]);
+    float rectX = map(i, 0, 5, 100, width - 100);
+    rect(rectX, 50, rectWidth, rectHeight);
+  }
+}
+
+void draw() {  //draw contiene las intrucciones que se ejecutan repetidamente
+
+  // Calculadora en la consola
+  int resultadoSuma = 5 + 6;
+  int resultadoResta = 7 - 4;
+  int resultadoMultiplicacion = 6 * 2;
+  int resultadoDivision = 8 / 2;
+
+  // Resultados en la consola
+  println("Suma: " + resultadoSuma);
+  println("Resta: " + resultadoResta);
+  println("Multiplicación: " + resultadoMultiplicacion);
+  println("División: " + resultadoDivision);
+}
+
+void generateColors() {
+  // Genera colores HSB con brillo variable y saturación constante
+  for (int i = 0; i < 6; i++) {
+    colors[i] = color(map(i, 0, 5, 0, 360), 80, brightnessValues[i]);
+  }
+}
